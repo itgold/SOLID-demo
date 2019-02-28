@@ -35,9 +35,9 @@ public class Enemy implements IFighter {
         health = hitDamage > 0 ? health - hitDamage : health;
         if (hitDamage > 0) {
             health = health - hitDamage;
-            LOG.info("_ : x");
+            LOG.info("|o   _   o|o   x   o|");
         } else {
-            LOG.info("_ : _");
+            LOG.info("|o   _   o|o   _   o|");
         }
     }
 

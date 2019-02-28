@@ -35,9 +35,9 @@ public class Hero implements IFighter {
         int hitDamage = damage - hitDefense;
         if (hitDamage > 0) {
             health = health - hitDamage;
-            LOG.info("x : _");
+            LOG.info("|o   x   o|o   _   o|");
         } else {
-            LOG.info("_ : _");
+            LOG.info("|o   _   o|o   _   o|");
         }
     }
 

@@ -16,20 +16,22 @@ public class TheGame {
         Hero hero = deserializeHero();
         Enemy enemy = loadEnemy();
 
-        for (int i = 0; i < 10; i++) {
+        LOG.info("Let the fight begin!");
+        LOG.info("|o-------o|o-------o|");
+        LOG.info("|o Hero  o|o Enemy o|");
 
+        while (true) {
             hero.attack(enemy);
             if (!enemy.isAlive()) {
-                LOG.info("Hero won!");
                 break;
             }
 
             enemy.attack(hero);
             if (!hero.isAlive()) {
-                LOG.info("Enemy wins :(");
                 break;
             }
         }
+        logFightEnd(hero, enemy);
 
         LOG.info(hero.toString());
         LOG.info(enemy.toString());
@@ -37,8 +39,20 @@ public class TheGame {
         serializeHero(hero);
     }
 
+    private static void logFightEnd(Hero hero, Enemy enemy) {
+        LOG.info("|o_______o|o_______o|");
+
+        if (!enemy.isAlive()) {
+            LOG.info("Hero won!");
+        } else if (!hero.isAlive()) {
+            LOG.info("Enemy wins :(");
+        } else {
+            LOG.info("It is a tie");
+        }
+    }
+
     private static Hero deserializeHero() {
-        return new Hero(10, 10, 10);
+        return new Hero(10, 10, 9);
     }
 
     private static Enemy loadEnemy() {
