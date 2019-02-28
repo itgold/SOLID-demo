@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 public class TheGame {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(TheGame.class);
+    public static final Logger LOG = LoggerFactory.getLogger(TheGame.class);
 
     public static void main(String[] args) {
 
@@ -20,19 +20,19 @@ public class TheGame {
 
             hero.attack(enemy);
             if (!enemy.isAlive()) {
-                LOGGER.info("Hero won!");
+                LOG.info("Hero won!");
                 break;
             }
 
             enemy.attack(hero);
             if (!hero.isAlive()) {
-                LOGGER.info("Enemy wins :(");
+                LOG.info("Enemy wins :(");
                 break;
             }
         }
 
-        LOGGER.info(hero.toString());
-        LOGGER.info(enemy.toString());
+        LOG.info(hero.toString());
+        LOG.info(enemy.toString());
 
         serializeHero(hero);
     }
@@ -46,11 +46,11 @@ public class TheGame {
     }
 
     public static void initialize() {
-        LOGGER.info("Initialization");
+        LOG.info("Initialization");
     }
 
     private static void serializeHero(Hero hero) {
-        LOGGER.info("serializing hero. Is alive: " + hero.isAlive());
+        LOG.info("serializing hero. Is alive: " + hero.isAlive());
     }
 
 }

@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Hero implements IFighter {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(TheGame.class);
+    public static final Logger LOG = LoggerFactory.getLogger(TheGame.class);
 
     private Random random = new Random();
 
@@ -35,7 +35,9 @@ public class Hero implements IFighter {
         int hitDamage = damage - hitDefense;
         if (hitDamage > 0) {
             health = health - hitDamage;
-
+            LOG.info("x : _");
+        } else {
+            LOG.info("_ : _");
         }
     }
 
