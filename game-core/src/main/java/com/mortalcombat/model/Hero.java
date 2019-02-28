@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Random;
 
-public class Enemy implements IFighter {
+public class Hero implements IFighter {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(TheGame.class);
 
@@ -16,7 +16,7 @@ public class Enemy implements IFighter {
     private int defense;
     private int damage;
 
-    public Enemy(int health, int defense, int damage) {
+    public Hero(int health, int defense, int damage) {
         this.health = health;
         this.defense = defense;
         this.damage = damage;
@@ -24,6 +24,7 @@ public class Enemy implements IFighter {
 
     @Override
     public void attack(IFighter opponent) {
+
         int hitDamage = random.nextInt(damage);
         opponent.acceptDamage(hitDamage);
     }
@@ -32,7 +33,10 @@ public class Enemy implements IFighter {
     public void acceptDamage(int damage) {
         int hitDefense = random.nextInt(defense);
         int hitDamage = damage - hitDefense;
-        health = hitDamage > 0 ? health - hitDamage : health;
+        if (hitDamage > 0) {
+            health = health - hitDamage;
+
+        }
     }
 
     @Override
@@ -42,7 +46,7 @@ public class Enemy implements IFighter {
 
     @Override
     public String toString() {
-        return "Enemy{" +
+        return "Hero{" +
                "health=" + health +
                ", defense=" + defense +
                ", damage=" + damage +

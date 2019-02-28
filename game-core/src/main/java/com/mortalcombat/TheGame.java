@@ -1,7 +1,7 @@
 package com.mortalcombat;
 
 import com.mortalcombat.model.Enemy;
-import com.mortalcombat.model.Fighter;
+import com.mortalcombat.model.Hero;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,19 +13,32 @@ public class TheGame {
 
         TheGame.initialize();
 
-        Fighter fighter = deserializeHero();
+        Hero hero = deserializeHero();
         Enemy enemy = loadEnemy();
 
         for (int i = 0; i < 10; i++) {
-            fighter.attack(enemy);
-            enemy.attack(fighter);
+
+            hero.attack(enemy);
+            if (!enemy.isAlive()) {
+                LOGGER.info("Hero won!");
+                break;
+            }
+
+            enemy.attack(hero);
+            if (!hero.isAlive()) {
+                LOGGER.info("Enemy wins :(");
+                break;
+            }
         }
 
-        serializeHero(fighter);
+        LOGGER.info(hero.toString());
+        LOGGER.info(enemy.toString());
+
+        serializeHero(hero);
     }
 
-    private static Fighter deserializeHero() {
-        return new Fighter(10, 10, 10);
+    private static Hero deserializeHero() {
+        return new Hero(10, 10, 10);
     }
 
     private static Enemy loadEnemy() {
@@ -36,8 +49,8 @@ public class TheGame {
         LOGGER.info("Initialization");
     }
 
-    private static void serializeHero(Fighter fighter) {
-        LOGGER.info("serializing");
+    private static void serializeHero(Hero hero) {
+        LOGGER.info("serializing hero. Is alive: " + hero.isAlive());
     }
 
 }
