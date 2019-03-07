@@ -91,8 +91,6 @@ public class MortalCombat {
                 obj.put(serviceName, childObj);
                 arr.put(obj);
             }
-
-            LOG.info(arr.toString());
         } catch (Exception ex) {
             LOG.error("Failed to read properties.", ex);
             return Result.unhealthy("Failed to read properties.");
