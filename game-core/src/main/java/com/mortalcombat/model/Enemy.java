@@ -1,6 +1,6 @@
 package com.mortalcombat.model;
 
-import com.mortalcombat.TheGame;
+import com.mortalcombat.MortalCombat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Enemy implements IFighter {
 
-    public static final Logger LOG = LoggerFactory.getLogger(TheGame.class);
+    public static final Logger LOG = LoggerFactory.getLogger(MortalCombat.class);
 
     private Random random = new Random();
 
@@ -48,7 +48,7 @@ public class Enemy implements IFighter {
 
     @Override
     public String toString() {
-        return "Enemy{" +
+        return "Enemy {" +
                "health=" + health +
                ", defense=" + defense +
                ", damage=" + damage +
