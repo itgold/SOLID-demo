@@ -1,7 +1,6 @@
 package com.mortalcombat.service;
 
 import com.codahale.metrics.health.HealthCheck;
-import com.mortalcombat.MortalCombat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
