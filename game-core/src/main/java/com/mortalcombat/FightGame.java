@@ -124,7 +124,7 @@ public class FightGame {
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private boolean createFolder(String folderName) {
-        LOG.info("Folder {} created", folderName);
+        LOG.debug("Folder {} created", folderName);
         return true;
     }
 

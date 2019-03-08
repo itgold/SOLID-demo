@@ -16,7 +16,7 @@ public class HealthCheckService {
     }
 
     public HealthCheck.Result runHealthCheck(String serviceName) {
-
+        LOG.debug("We need this {}", serviceName);
         return null;
     }
 }
