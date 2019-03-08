@@ -1,6 +1,6 @@
 package com.mortalcombat.model;
 
-import com.mortalcombat.MortalCombat;
+import com.mortalcombat.FightGame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Hero implements IFighter {
 
-    public static final Logger LOG = LoggerFactory.getLogger(MortalCombat.class);
+    public static final Logger LOG = LoggerFactory.getLogger(FightGame.class);
 
     private Random random = new Random();
 
