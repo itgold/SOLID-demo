@@ -1,4 +1,4 @@
-package com.mortalcombat.model;
+package com.game.model;
 
 public interface IFighter {
 

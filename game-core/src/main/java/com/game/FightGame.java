@@ -1,8 +1,8 @@
-package com.mortalcombat;
+package com.game;
 
-import com.mortalcombat.model.Enemy;
-import com.mortalcombat.model.Hero;
-import com.mortalcombat.service.HealthCheckService;
+import com.game.model.Enemy;
+import com.game.model.Hero;
+import com.game.service.HealthCheckService;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;

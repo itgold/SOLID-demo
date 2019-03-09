@@ -1,6 +1,6 @@
-package com.mortalcombat.model;
+package com.game.model;
 
-import com.mortalcombat.FightGame;
+import com.game.FightGame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

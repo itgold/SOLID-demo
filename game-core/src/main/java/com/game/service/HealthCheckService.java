@@ -1,4 +1,4 @@
-package com.mortalcombat.service;
+package com.game.service;
 
 import com.codahale.metrics.health.HealthCheck;
 import org.slf4j.Logger;
