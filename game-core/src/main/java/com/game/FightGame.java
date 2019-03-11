@@ -50,7 +50,6 @@ public class FightGame {
 
             persistFighters(hero, enemy);
         }
-
     }
 
     private static void logFightEnd(Hero hero, Enemy enemy) {
