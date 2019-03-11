@@ -9,15 +9,8 @@ public class Hero extends BaseFighter {
     }
 
     @Override
-    public void acceptDamage(int damage) {
-        int hitDefense = getRandom().nextInt(getDefense());
-        int hitDamage = damage - hitDefense;
-        if (hitDamage > 0) {
-            setHealth(getHealth() - hitDamage);
-            LOG.info("|o   x   o|o   _   o|");
-        } else {
-            LOG.info("|o   _   o|o   _   o|");
-        }
+    public void updateHitContent() {
+        LOG.info("|o   x   o|o   _   o|");
     }
 
     @Override

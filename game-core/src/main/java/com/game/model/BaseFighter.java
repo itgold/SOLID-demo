@@ -22,6 +22,20 @@ public abstract class BaseFighter implements IFighter {
     }
 
     @Override
+    public void acceptDamage(int damage) {
+        int hitDefense = getRandom().nextInt(getDefense());
+        int hitDamage = damage - hitDefense;
+        if (hitDamage > 0) {
+            setHealth(getHealth() - hitDamage);
+            updateHitContent();
+        } else {
+            LOG.info("|o   _   o|o   _   o|");
+        }
+    }
+
+    protected abstract void updateHitContent();
+
+    @Override
     public boolean isAlive() {
         return getHealth() > 0;
     }
