@@ -129,7 +129,7 @@ public class FightGame {
     }
 
     private Hero loadHero() {
-        Hero hero = new Hero(10, 10, 9);
+        Hero hero = new Hero(10, 10, 10);
         hero.create();
         return hero;
     }
@@ -142,7 +142,7 @@ public class FightGame {
 
     private static void persistFighters(Hero hero, Enemy enemy) {
         LOG.info("Hero is alive: " + hero.isAlive());
-        LOG.info("Enemy is alive: " + hero.isAlive());
+        LOG.info("Enemy is alive: " + enemy.isAlive());
 
         hero.update();
         enemy.update();
