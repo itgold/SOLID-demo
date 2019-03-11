@@ -1,6 +1,5 @@
 package com.game.model;
 
-import com.game.FightGame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,6 +24,21 @@ public abstract class BaseFighter implements IFighter {
     @Override
     public boolean isAlive() {
         return getHealth() > 0;
+    }
+
+    @Override
+    public void create() {
+        LOG.debug("Created");
+    }
+
+    @Override
+    public void update() {
+        LOG.debug("Updated");
+    }
+
+    @Override
+    public void delete() {
+        LOG.debug("Deleted");
     }
 
     public Random getRandom() {

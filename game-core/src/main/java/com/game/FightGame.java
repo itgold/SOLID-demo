@@ -22,11 +22,12 @@ public class FightGame {
         FightGame game = new FightGame();
         game.initialize();
 
-        Hero hero = game.deserializeHero();
-        Enemy enemy = game.loadEnemy();
+        Result checkResult = game.healthCheck();
 
-        Result check = game.check();
-        if (check.isHealthy()) {
+        if (checkResult.isHealthy()) {
+            Hero hero = game.loadHero();
+            Enemy enemy = game.loadEnemy();
+
             LOG.info("Let the fight begin!");
             LOG.info("|o-------o|o-------o|");
             LOG.info("|o Hero  o|o Enemy o|");
@@ -47,7 +48,7 @@ public class FightGame {
             LOG.info(hero.toString());
             LOG.info(enemy.toString());
 
-            serializeHero(hero);
+            persistFighters(hero, enemy);
         }
 
     }
@@ -64,7 +65,7 @@ public class FightGame {
         }
     }
 
-    protected Result check() {
+    protected Result healthCheck() {
         boolean healthCheck = true;
 
         try {
@@ -128,16 +129,23 @@ public class FightGame {
         return true;
     }
 
-    private Hero deserializeHero() {
-        return new Hero(10, 10, 9);
+    private Hero loadHero() {
+        Hero hero = new Hero(10, 10, 9);
+        hero.create();
+        return hero;
     }
 
     private Enemy loadEnemy() {
-        return new Enemy(10, 10, 10);
+        Enemy enemy = new Enemy(10, 10, 10);
+        enemy.create();
+        return enemy;
     }
 
-    private static void serializeHero(Hero hero) {
-        LOG.info("serializing hero. Is alive: " + hero.isAlive());
-    }
+    private static void persistFighters(Hero hero, Enemy enemy) {
+        LOG.info("Hero is alive: " + hero.isAlive());
+        LOG.info("Enemy is alive: " + hero.isAlive());
 
+        hero.update();
+        enemy.update();
+    }
 }

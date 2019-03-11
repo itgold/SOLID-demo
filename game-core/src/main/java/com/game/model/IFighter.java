@@ -1,5 +1,8 @@
 package com.game.model;
 
+/**
+ * Generic fighter interface for objects that can fight.
+ */
 public interface IFighter {
 
     void attack(IFighter opponent);
@@ -7,4 +10,10 @@ public interface IFighter {
     void acceptDamage(int damage);
 
     boolean isAlive();
+
+    void create();
+
+    void update();
+
+    void delete();
 }
