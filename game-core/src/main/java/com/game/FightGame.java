@@ -13,10 +13,17 @@ import java.util.Set;
 
 import static com.codahale.metrics.health.HealthCheck.Result;
 
+/**
+ * This is the primary game execution point.
+ * Initializes the game and run it.
+ */
 public class FightGame {
 
     public static final Logger LOG = LoggerFactory.getLogger(FightGame.class);
 
+    /**
+     * Primary entry point method.
+     */
     public static void main(String[] args) throws IOException {
 
         FightGame game = new FightGame();
@@ -52,6 +59,11 @@ public class FightGame {
         }
     }
 
+    /**
+     * Logs the results of the game.
+     * @param hero currently fighting hero.
+     * @param enemy currently fighting enemy.
+     */
     private static void logFightEnd(Hero hero, Enemy enemy) {
         LOG.info("|o_______o|o_______o|");
 
@@ -64,6 +76,10 @@ public class FightGame {
         }
     }
 
+    /**
+     * Makes a call to a very remote server to ensure that application's health is fine.
+     * @return health check result.
+     */
     protected Result healthCheck() {
         boolean healthCheck = true;
 
@@ -104,42 +120,72 @@ public class FightGame {
         }
     }
 
+    /**
+     * Initialization logic goes here.
+     * @throws IOException if operation failed.
+     */
     public void initialize() throws IOException {
         LOG.info("Initialization");
         createUploadFolder();
         createDownloadFolder();
     }
 
+    /**
+     * Creates folder to upload fighter's model.
+     * @throws IOException if can't complete operation.
+     */
     public void createUploadFolder() throws IOException {
         if (!createFolder("Uploads")) {
             throw new IOException("Unable to create upload folder.");
         }
     }
 
+    /**
+     * Initialization of the download folder.
+     * @throws IOException if folder creation failed.
+     */
     public void createDownloadFolder() throws IOException {
         if (!createFolder("Downloads"))  {
             throw new IOException("Unable to create download folder.");
         }
     }
 
+    /**
+     * Utility method that creates any folder you ask.
+     * @param folderName path to the folder.
+     * @return true if operation succeeded.
+     */
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private boolean createFolder(String folderName) {
         LOG.debug("Folder {} created", folderName);
         return true;
     }
 
+    /**
+     * Loads hero into memory. This might be performance intensive.
+     * @return a new instance of Hero object.
+     */
     private Hero loadHero() {
         Hero hero = new Hero(10, 10, 10);
         hero.create();
         return hero;
     }
 
+    /**
+     * Loads an enemy to fight against.
+     * @return an Enemy object instance.
+     */
     private Enemy loadEnemy() {
         Enemy enemy = new Enemy(10, 10, 10);
         enemy.create();
         return enemy;
     }
 
+    /**
+     * Persists given hero and enemy into the storage.
+     * @param hero object to persist.
+     * @param enemy instance to persist.
+     */
     private static void persistFighters(Hero hero, Enemy enemy) {
         LOG.info("Hero is alive: " + hero.isAlive());
         LOG.info("Enemy is alive: " + enemy.isAlive());
